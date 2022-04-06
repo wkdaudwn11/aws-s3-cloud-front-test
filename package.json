@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
+    "export": "next export -o dist",
     "start": "next start",
     "lint": "next lint",
-    "s3": "aws s3 sync ./out s3://mj-s3-cloudfront-test3",
-    "cloudfront": "aws cloudfront create-invalidation --profile=s3-cloudfront --distribution-id EI3RWUFX0UM98 --paths /*",
-    "deploy": "yarn build && yarn s3 && yarn cloudfront"
+    "s3": "aws s3 sync ./dist s3://mj-s3-cloudfront-test3",
+    "cloudfront": "aws cloudfront create-invalidation --profile=s3-cloudfront --distribution-id EI3RWUFX0UM98 --paths /*"
   },
   "dependencies": {
     "next": "12.1.4",
