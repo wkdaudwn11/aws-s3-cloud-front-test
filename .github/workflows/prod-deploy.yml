@@ -65,4 +65,4 @@ jobs:
           fields: repo,message,commit,author,action
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
+        if: ${{ !contains(github.event.head_commit.message, '[skip message]') }}
