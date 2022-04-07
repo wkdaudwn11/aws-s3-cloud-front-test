@@ -19,8 +19,10 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: npm install
-      - name: Export build files
-        run: npm export
+      - name: Run build
+        run: npm run export
+      - name: Run export
+        run: npm run export
       # - name: Set up Ruby 2.6
       #   uses: actions/setup-ruby@v1
       #   with:
