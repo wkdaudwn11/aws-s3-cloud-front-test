@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "s3": "aws s3 sync ./dist s3://s3-cloudfront2",
-    "cloudfront": "aws cloudfront create-invalidation --profile=s3-cloudfront --distribution-id EI3RWUFX0UM98 --paths /*"
+    "cloudfront": "aws cloudfront create-invalidation --distribution-id EI3RWUFX0UM98 --paths /*"
   },
   "dependencies": {
     "next": "12.1.4",

@@ -48,16 +48,20 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws s3 sync ./dist\
-            --region ap-northeast-2 \
-            _site s3://s3-cloudfront2 \
-            --delete
+          aws s3 sync ./dist s3://s3-cloudfront2
+        # run: |
+        #   aws s3 sync ./dist\
+        #     --region ap-northeast-2 \
+        #     _site s3://s3-cloudfront2 \
+        #     --delete
       - name: Invalidate Cache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws cloudfront create-invalidation \
-          --distribution-id {{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
-          --paths "/*"
+          aws cloudfront create-invalidation --distribution-id {{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths /*
+        # run: |
+        #   aws cloudfront create-invalidation \
+        #   --distribution-id {{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
+        #   --paths "/*"
