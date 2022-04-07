@@ -7,6 +7,8 @@ phases:
     commands:
       - npm run build
       - npm run export
+  # post_build: # Build 완료 후에 할 작업
+  #   commands:
 artifacts:
   files:
     - "**/*"
